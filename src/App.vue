@@ -1,23 +1,23 @@
 <template>
   <main>
-    <input type="number" value="0" />
+    <input type="text" v-model="currentNumber" />
     <div class="keys">
-      <button class="op__key" op="clear">C</button>
-      <button class="op__key" op="negate">+/-</button>
-      <button class="op__key" op="percent">%</button>
-      <button class="op__key" op="divide">/</button>
-      <button class="num__key">7</button>
-      <button class="num__key">8</button>
-      <button class="num__key">9</button>
-      <button class="op__key" op="multiply">x</button>
-      <button class="num__key">4</button>
-      <button class="num__key">5</button>
-      <button class="num__key">6</button>
-      <button class="op__key" op="subtract">-</button>
-      <button class="num__key">1</button>
-      <button class="num__key">2</button>
-      <button class="num__key">3</button>
-      <button class="op__key" op="add">+</button>
+      <button class="op__key">C</button>
+      <button class="op__key">+/-</button>
+      <button class="op__key">%</button>
+      <button class="op__key">/</button>
+      <button class="num__key" @click="addNumber('7')">7</button>
+      <button class="num__key" @click="addNumber('8')">8</button>
+      <button class="num__key" @click="addNumber('9')">9</button>
+      <button class="op__key">x</button>
+      <button class="num__key" @click="addNumber('4')">4</button>
+      <button class="num__key" @click="addNumber('5')">5</button>
+      <button class="num__key" @click="addNumber('6')">6</button>
+      <button class="op__key">-</button>
+      <button class="num__key" @click="addNumber('1')">1</button>
+      <button class="num__key" @click="addNumber('2')">2</button>
+      <button class="num__key" @click="addNumber('3')">3</button>
+      <button class="op__key">+</button>
       <span></span>
       <button class="num__key">0</button>
       <button class="num__key">.</button>
@@ -29,5 +29,15 @@
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      currentNumber: '',
+    };
+  },
+  methods: {
+    addNumber(number){
+      this.currentNumber += number
+    }
+  }
 };
 </script>
