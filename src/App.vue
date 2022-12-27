@@ -2,7 +2,7 @@
   <main>
     <input type="text" v-model="currentNumber" />
     <div class="keys">
-      <button class="op__key">C</button>
+      <button class="op__key" @click="clearNumber">C</button>
       <button class="op__key">+/-</button>
       <button class="op__key">%</button>
       <button class="op__key">/</button>
@@ -19,8 +19,8 @@
       <button class="num__key" @click="addNumber('3')">3</button>
       <button class="op__key">+</button>
       <span></span>
-      <button class="num__key">0</button>
-      <button class="num__key">.</button>
+      <button class="num__key" @click="addNumber('0')">0</button>
+      <button class="num__key" @click="addDot">.</button>
       <button class="eq__key">=</button>
     </div>
   </main>
@@ -31,13 +31,23 @@ export default {
   name: "App",
   data() {
     return {
-      currentNumber: '',
+      currentNumber: "",
     };
   },
   methods: {
-    addNumber(number){
-      this.currentNumber += number
-    }
-  }
+    addNumber(number) {
+      if (this.currentNumber == 0 && number == 0) return;
+
+      this.currentNumber += number;
+    },
+    clearNumber() {
+      this.currentNumber = "";
+    },
+    addDot() {
+      if (this.currentNumber.includes(".")) return;
+
+      this.currentNumber += ".";
+    },
+  },
 };
 </script>
